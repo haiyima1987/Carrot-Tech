@@ -1,0 +1,59 @@
+<div class="col-sm-12 nameCardPanel">
+    <div class="col-sm-4 panelLeft">
+        <img ng-src="{{ infoPanelVm.person.photo | defaultImg:'img/avatar.png' }}"
+             alt="{{ $index }}"
+             class="img-circle img-responsive"/>
+        <h5>
+            {{ infoPanelVm.person.name }}&nbsp;
+            <i class="fa"
+               ng-class="{'fa-female': infoPanelVm.person.sex == 'F',
+                            'fa-male': infoPanelVm.person.sex == 'M'}"></i>
+        </h5>
+    </div>
+    <div class="col-sm-8 panelRight">
+        <table class="table table-striped table-condensed">
+            <thead>
+            <tr>
+                <td><h6>Personal Information:</h6></td>
+            </tr>
+            <tbody>
+            <tr>
+                <td><h6><i class="fa fa-id-card-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;{{
+                    infoPanelVm.person.id }}</h6></td>
+            </tr>
+            <tr>
+                <td>
+                    <h6><i class="fa fa-envelope-o"></i>&nbsp;&nbsp;&nbsp;&nbsp;{{ infoPanelVm.person.email }}
+                    </h6>
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                    <h6><i class="fa fa-gift"></i>&nbsp;&nbsp;&nbsp;&nbsp;{{ infoPanelVm.person.birthdate |
+                        date:'longDate' }}</h6>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h6><i class="fa fa-mobile" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;{{
+                        infoPanelVm.person.phonenumber }}
+                    </h6>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h6><i class="fa fa-home" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;{{
+                        infoPanelVm.person.address }}</h6>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h6><i class="fa fa-map-marker"></i>&nbsp;&nbsp;&nbsp;&nbsp;{{ infoPanelVm.person.city }},
+                        {{ infoPanelVm.person.country }}</h6>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

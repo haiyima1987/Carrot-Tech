@@ -1,0 +1,120 @@
+<div ng-controller="DepartmentController as deptVm">
+    <div>
+        <form class="topBar form-inline well well-sm">
+            <i class="fa fa-search" aria-hidden="true"></i>
+            <div class="form-group">
+                <input type="text"
+                       class="form-control"
+                       placeholder="Search..."
+                       ng-model="deptVm.search.$"
+                       ng-model-options="{ debounce: 300 }">
+                <label>
+                    <i class="fa fa-sort-amount-asc" aria-hidden="true"></i>
+                    <select class="form-control" ng-model="deptVm.order">
+                        <option value="id">ID (ASC)</option>
+                        <option value="-id">ID (DESC)</option>
+                    </select>
+                </label>
+            </div>
+            <a class="btn btn-primary pull-right"
+               ui-sref="deptEdit({ id: item.id, isCreate: true })">
+                <i class="fa fa-user-plus" aria-hidden="true"></i> Create
+            </a>
+        </form>
+        <!--<pre>{{ deptVm.search }}</pre>-->
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <td class="col-1">
+                    <div class="sortable">
+                        <span class="fa fa-sort-asc" aria-hidden="true" ng-click="deptVm.order = 'id'"></span>
+                        <span class="fa fa-sort-desc" aria-hidden="true" ng-click="deptVm.order = '-id'"></span>
+                    </div>
+                    ID
+                </td>
+                <td>Title</td>
+                <td>Phone</td>
+                <td>Address</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="item in deptVm.filteredDepts = (deptVm.data.departments | filter:deptVm.search | orderBy:deptVm.order)"
+                ng-style="{'background-color': deptVm.selectedDept.id == item.id ? 'lightgrey' : ''}"
+                ng-click="deptVm.selectDept(item)">
+                <!--<tr ng-repeat="item in deptVm.data.tasks">-->
+                <td>{{ item.id }}</td>
+                <td><strong>{{ item.name }}</strong></td>
+                <td>{{ item.phone }}</td>
+                <td>{{ item.address }}</td>
+                <td>
+                    <!--<button class="btn btn-default" ui-sref="taskEdit({ id = item.id })" ng-click="deptVm.showEditForm(item)">Edit</button>-->
+                    <button type="button"
+                            class="btn btn-warning pull-right"
+                            ui-sref="deptEdit({ id: item.id, isCreate: false })">
+                        <i class="fa fa-pencil"></i>&nbsp;Edit
+                    </button>
+                    <button type="button"
+                            class="btn btn-success pull-right"
+                            ng-click="deptVm.showViewModal(item)">
+                        <!--ui-sref="empEdit({ email: cardVm.person.email })">-->
+                        <i class="fa fa-list-ul" aria-hidden="true"></i>&nbsp;View
+                    </button>
+                </td>
+                <!--<td>-->
+                <!--<button class="btn btn-danger" ng-click="deptVm.removeTask(item.id)">Delete</button>-->
+                <!--</td>-->
+            </tr>
+            <!--<tr ng-show="deptVm.filteredTasks.length == 0">-->
+            <!--<td colspan="6">-->
+            <!--<div class="alert alert-info">-->
+            <!--<p class="text-center">No results found</p>-->
+            <!--</div>-->
+            <!--</td>-->
+            <!--</tr>-->
+            </tbody>
+        </table>
+    </div>
+
+    <div ng-show="deptVm.data.departments.length == 0 && !deptVm.data.isLoading">
+        <div class="alert alert-info">
+            <p class="text-center">No results found</p>
+        </div>
+    </div>
+
+    <div spinner is-loading="deptVm.data.isLoading"></div>
+
+    <!--<div class="col-xs-3" ng-hide="deptVm.editFormShowing">-->
+    <!--<div class="well">-->
+    <!--<form name="singleTask">-->
+    <!--<h4>Add Task</h4>-->
+    <!--<div class="form-group">-->
+    <!--<label>Task ID</label>-->
+    <!--<input name="id" class="form-control" ng-model="deptVm.data.singleTask.id" required/>-->
+    <!--</div>-->
+    <!--<div class="form-group">-->
+    <!--<label>Task Title</label>-->
+    <!--<input name="title" class="form-control" ng-model="deptVm.data.singleTask.title" required/>-->
+    <!--</div>-->
+    <!--<div class="form-group">-->
+    <!--<label>Description</label>-->
+    <!--<textarea name="description" class="form-control" ng-model="deptVm.data.singleTask.description"-->
+    <!--required></textarea>-->
+    <!--</div>-->
+    <!--<div class="form-group">-->
+    <!--<label>status</label>-->
+    <!--<input name="status" class="form-control" ng-model="deptVm.data.singleTask.status" required/>-->
+    <!--</div>-->
+    <!--<div class="form-group">-->
+    <!--<label>Start Date</label>-->
+    <!--<input name="start" type="date" class="form-control" ng-model="deptVm.data.singleTask.start"-->
+    <!--required/>-->
+    <!--</div>-->
+    <!--<div class="form-group">-->
+    <!--<label>End Date</label>-->
+    <!--<input name="end" type="date" class="form-control" ng-model="deptVm.data.singleTask.end" required/>-->
+    <!--</div>-->
+    <!--<button class="btn btn-success" ng-click="deptVm.addTask(deptVm.data.singleTask)">Add</button>-->
+    <!--</form>-->
+    <!--</div>-->
+    <!--</div>-->
+</div>

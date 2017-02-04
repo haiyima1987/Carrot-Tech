@@ -1,0 +1,206 @@
+<div ng-controller="DashboardController as dashboardVm">
+    <!--<button ng-click="dashboardVm.call()">Call</button>-->
+    <div class="col-sm-12">
+        <uib-tabset active="activeJustified" justified="true">
+            <uib-tab index="0" heading="TASK">
+                <div class="leftBar col-sm-3">
+                    <div class="well">
+                        <h5>{{ dashboardVm.taskData.title }}
+                            <span class="label label-info">{{ dashboardVm.taskData.tasks.length }}</span>
+                        </h5>
+                        <input type="text"
+                               class="form-control"
+                               placeholder="Search..."
+                               ng-model="dashboardVm.taskSearch.$"
+                               ng-model-options="{ debounce: 300 }">
+                        <div class="checkbox" ng-repeat="item in dashboardVm.taskData.tasks | filter:dashboardVm.taskSearch">
+                            <label>
+                                <input type="checkbox" ng-model="item.display"
+                                       ng-change="dashboardVM.updateSelectedTasks()">
+                                <small>{{ item.title }}</small>
+                                <!--pass in the item in taskDisplay()-->
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <!--<div class="rightBar col-sm-9">-->
+                <!--</div>-->
+                <div class="rightBar col-sm-9">
+                    <div spinner is-loading="dashboardVm.newsData.isLoading"></div>
+                    <div class="well"
+                         ng-show="(selectedTasks = dashboardVm.taskData.selectedTasks).length == 0">
+                        <!--<h3><span class="label label-success text-center">{{ dashboardVm.newsData.title }}</span></h3>-->
+                        <div class="newsHeader">
+                            <h5>{{ dashboardVm.newsData.title }}</h5>
+                        </div>
+                        <div news-card
+                             ng-repeat="news in dashboardVm.newsData.news"
+                             news="news">
+                        </div>
+                    </div>
+                    <div class="well"
+                         ng-show="selectedTasks.length > 0">
+                        <div task-info ng-repeat="task in selectedTasks"
+                             task="task"
+                             find-dept="dashboardVm.parentFindDept">
+                        </div>
+                    </div>
+                </div>
+            </uib-tab>
+
+            <uib-tab index="1" heading="DEPARTMENT">
+                <div class="leftBar col-sm-3">
+                    <div class="well">
+                        <h5>{{ dashboardVm.deptData.title }}
+                            <span class="label label-info">{{ dashboardVm.deptData.departments.length }}</span>
+                        </h5>
+                        <input type="text"
+                               class="form-control"
+                               placeholder="Search..."
+                               ng-model="dashboardVm.deptSearch.$"
+                               ng-model-options="{ debounce: 300 }">
+                        <div class="checkbox" ng-repeat="item in dashboardVm.deptData.departments | filter:dashboardVm.deptSearch">
+                            <label>
+                                <input type="checkbox" ng-model="item.display"
+                                       ng-change="dashboardVM.updateSelectedDepts()">
+                                {{ item.name }}
+                                <!--pass in the item in taskDisplay()-->
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="rightBar col-sm-9">
+                    <div spinner is-loading="dashboardVm.newsData.isLoading"></div>
+                    <div class="well"
+                         ng-show="(selectedDepts = dashboardVm.deptData.selectedDepts).length == 0">
+                        <!--<h3><span class="label label-success text-center">{{ dashboardVm.newsData.title }}</span></h3>-->
+                        <div class="newsHeader">
+                            <h5>{{ dashboardVm.newsData.title }}</h5>
+                        </div>
+                        <div news-card
+                             ng-repeat="news in dashboardVm.newsData.news"
+                             news="news">
+                        </div>
+                    </div>
+                    <div class="well"
+                         ng-show="selectedDepts.length > 0">
+                        <div dept-info ng-repeat="dept in selectedDepts"
+                             dept="dept">
+                        </div>
+                    </div>
+                </div>
+            </uib-tab>
+
+            <uib-tab index="2" heading="EMPLOYEE">
+                <div class="leftBar col-sm-3">
+                    <div class="well">
+                        <h5>{{ dashboardVm.empData.title }}
+                            <span class="label label-info">{{ dashboardVm.empData.allEmployees.length }}</span>
+                        </h5>
+                        <input type="text"
+                               class="form-control"
+                               placeholder="Search..."
+                               ng-model="dashboardVm.empSearch.$"
+                               ng-model-options="{ debounce: 300 }">
+                        <!--<label>-->
+                        <!--<pre>{{ dashboardVm.empSearch }}</pre>-->
+                        <div class="checkbox" ng-repeat="item in dashboardVm.empData.allEmployees | filter:dashboardVm.empSearch">
+                            <label>
+                                <input type="checkbox" ng-model="item.display"
+                                       ng-change="dashboardVM.updateSelectedEmps()">
+                                {{ item.name }}
+                                <!--pass in the item in taskDisplay()-->
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="rightBar col-sm-9">
+                    <div spinner is-loading="dashboardVm.newsData.isLoading"></div>
+                    <div class="well"
+                         ng-show="(selectedEmps = dashboardVm.empData.selectedEmps).length == 0">
+                        <!--<h3><span class="label label-success text-center">{{ dashboardVm.newsData.title }}</span></h3>-->
+                        <div class="newsHeader">
+                            <h5>{{ dashboardVm.newsData.title }}</h5>
+                        </div>
+                        <div news-card
+                             ng-repeat="news in dashboardVm.newsData.news"
+                             news="news">
+                        </div>
+                    </div>
+                    <div class="well"
+                         ng-show="selectedEmps.length > 0">
+                        <div class="newsHeader">
+                            <h5>Selected Employees</h5>
+                        </div>
+                        <table class="table table-bordered table-condensed">
+                            <thead>
+                            <tr>
+                                <td class="col-1">#</td>
+                                <td class="col-2">Name</td>
+                                <td class="col-3">Email</td>
+                                <td class="col-4">Phone</td>
+                            <tbody>
+                            <tr ng-repeat="emp in selectedEmps">
+                                <td><img ng-src="{{ emp.photo | defaultImg:'img/avatar.png' }}"
+                                         class="img-circle profilePhoto"
+                                         alt="{{ $index }}"></td>
+                                <td>{{ emp.name }}</td>
+                                <td>{{ emp.email }}</td>
+                                <td>{{ emp.phonenumber }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </uib-tab>
+        </uib-tabset>
+    </div>
+
+    <!--<div class="col-sm-12">-->
+    <!--<div ui-view="weather"></div>-->
+    <!--</div>-->
+
+    <!--<task-info ng-repeat="item in dashboardVm.test" task="item">-->
+    <!--</task-info>-->
+    <!--</div>-->
+
+    <!--<div id="dashDept" class="tab-pane fade">-->
+    <!--hahahahahalol-->
+    <!--&lt;!&ndash; Departments &ndash;&gt;-->
+    <!--<div class="well col-xs-4">-->
+    <!--<h3>{{ dashboardVm.data.departmentTitle }}-->
+    <!--<span class="label label-info">{{ (dashboardVm.data.departments).length }}</span>-->
+    <!--</h3>-->
+    <!--<div class="checkbox" ng-repeat="item in dashboardVm.data.departments">-->
+    <!--<label>-->
+    <!--<input type="checkbox" ng-model="item.display" ng-change="dashboardVm.departmentDisplay()">{{ item.name }}-->
+    <!--&lt;!&ndash;pass in the item in taskDisplay()&ndash;&gt;-->
+    <!--</label>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--&lt;!&ndash; Table departments &ndash;&gt;-->
+    <!--<table class="table table-striped">-->
+    <!--<thead ng-if="dashboardVm.departmentHeadDisplay">-->
+    <!--<tr>-->
+    <!--<td>ID</td>-->
+    <!--<td>Title</td>-->
+    <!--<td>Description</td>-->
+    <!--<td>Employees</td>-->
+    <!--</tr>-->
+    <!--</thead>-->
+    <!--<tbody>-->
+    <!--<tr ng-repeat="item in dashboardVm.data.departments" ng-if="item.display">-->
+    <!--<td>{{ item.id }}</td>-->
+    <!--<td>{{ item.name }}</td>-->
+    <!--<td>{{ item.description }}</td>-->
+    <!--<td>-->
+    <!--<div ng-repeat="employee in item.employees">{{ employee.firstName }} {{ employee.lastName }}-->
+    <!--</div>-->
+    <!--</td>-->
+    <!--</tr>-->
+    <!--</tbody>-->
+    <!--</table>-->
+    <!--</div>-->
+    <!--</div>-->
+
+</div>

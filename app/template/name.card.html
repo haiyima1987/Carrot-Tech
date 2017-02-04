@@ -1,0 +1,47 @@
+<div class="col-sm-6">
+    <div class="nameCard well well-sm">
+        <div class="row">
+            <div class="col-sm-4">
+                <img ng-src="{{ cardVm.person.photo | defaultImg:'img/avatar.png' }}"
+                     alt="{{ $index }}"
+                     class="img-rounded img-responsive"/>
+            </div>
+            <div class="col-sm-8">
+                <h4>{{ cardVm.person.name }}
+                    <i class="fa"
+                       ng-class="{'fa-female': cardVm.person.sex == 'F', 'fa-male': cardVm.person.sex == 'M'}"></i>
+                </h4>
+                <small>{{ cardVm.person.city }}, {{ cardVm.person.country }}
+                    <i class="fa fa-map-marker"></i>
+                </small>
+                <p>
+                    <i class="fa fa-envelope-o"></i>
+                    {{ cardVm.person.email }}
+                    <br/>
+                    <i class="fa fa-gift"></i>
+                    {{ cardVm.person.birthdate | date:"longDate"}}
+                </p>
+
+                <button type="button"
+                        class="btn btn-warning btn-sm"
+                        ui-sref="empEdit({ email: cardVm.person.email, isCreate: false })">
+                    <i class="fa fa-pencil"></i>&nbsp;Edit
+                </button>
+                <button type="button"
+                        class="btn btn-success btn-sm"
+                        ng-click="cardVm.showViewModal(cardVm.person)">
+                        <!--ui-sref="empEdit({ email: cardVm.person.email })">-->
+                    <i class="fa fa-list-ul" aria-hidden="true"></i>&nbsp;View
+                </button>
+
+                <!--<button type="button"-->
+                        <!--class="btn btn-danger btn-sm"-->
+                        <!--ladda="cardVm.isDeleting"-->
+                        <!--ng-click="cardVm.deletePerson(cardVm.person)">-->
+                        <!--&lt;!&ndash;ng-click="deletePerson()(cardVm.person)"> // for returned parent function&ndash;&gt;-->
+                    <!--<i class="fa fa-trash"></i>&nbsp;Delete-->
+                <!--</button>-->
+            </div>
+        </div>
+    </div>
+</div>

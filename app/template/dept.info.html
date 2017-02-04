@@ -1,0 +1,37 @@
+<div class="panel panel-primary">
+    <!--Default panel contents -->
+    <div class="panel-heading">{{ deptInfoVm.dept.name }}</div>
+    <div class="panel-body">
+        <p>Phone: {{ deptInfoVm.dept.phone }}</p>
+        <p>Address: {{ deptInfoVm.dept.address }}</p>
+        <p>Description: {{ deptInfoVm.dept.description }}</p>
+        <h6>
+            <strong>Employees: </strong>
+            <span class="label label-info">
+                {{ (emps = deptInfoVm.getSelectedEmps(deptInfoVm.dept.employees)).length }}
+            </span>
+        </h6>
+    </div>
+    <table class="table table-bordered table-condensed">
+        <thead>
+        <tr>
+            <td class="col-1">#</td>
+            <td class="col-2">Name</td>
+            <td class="col-1">#</td>
+            <td class="col-2">Name</td>
+        </tr>
+        <tbody>
+        <tr ng-repeat="emp in emps" ng-if="$index % 2 == 0">
+            <td><img ng-src="{{ emps[$index].photo | defaultImg:'img/avatar.png' }}"
+                     class="img-circle profilePhoto"
+                     alt="{{ $index }}"></td>
+            <td>{{ emps[$index].name }}</td>
+            <td><img ng-src="{{ emps[$index + 1].photo | defaultImg:'img/avatar.png' }}"
+                     ng-if="emps.length > $index + 1"
+                     class="img-circle profilePhoto"
+                     alt="{{ $index + 1 }}"></td>
+            <td ng-if="emps.length > $index + 1">{{ emps[$index + 1].name }}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>

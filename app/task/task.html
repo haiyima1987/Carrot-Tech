@@ -1,0 +1,131 @@
+<div ng-controller="TaskController as taskVm">
+    <div>
+        <form class="topBar form-inline well well-sm">
+            <i class="fa fa-search" aria-hidden="true"></i>
+            <div class="form-group">
+                <input type="text"
+                       class="form-control"
+                       placeholder="Search..."
+                       ng-model="taskVm.search.$"
+                       ng-model-options="{ debounce: 300 }">
+                <label>
+                    <i class="fa fa-sort-amount-asc" aria-hidden="true"></i>
+                    <select class="form-control" ng-model="taskVm.order">
+                        <option value="id">ID (ASC)</option>
+                        <option value="-id">ID (DESC)</option>
+                        <option value="status">status (ASC)</option>
+                        <option value="-status">status (DESC)</option>
+                    </select>
+                </label>
+            </div>
+            <a ui-sref="taskEdit({ id: '', isCreate: true })" class="btn btn-primary pull-right">
+                <i class="fa fa-user-plus" aria-hidden="true"></i> Create
+            </a>
+        </form>
+        <!--<pre>{{ taskVm.search }}</pre>-->
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <td class="col-1">
+                    <div class="sortable">
+                        <span class="fa fa-sort-asc" aria-hidden="true" ng-click="taskVm.order = 'id'"></span>
+                        <span class="fa fa-sort-desc" aria-hidden="true" ng-click="taskVm.order = '-id'"></span>
+                    </div>
+                    ID
+                </td>
+                <td>Title</td>
+                <td>
+                    <div class="sortable">
+                        <span class="fa fa-sort-asc" aria-hidden="true" ng-click="taskVm.order = 'status'"></span>
+                        <span class="fa fa-sort-desc" aria-hidden="true" ng-click="taskVm.order = '-status'"></span>
+                    </div>
+                    Status
+                </td>
+                <td>Start Date</td>
+                <td>End Date</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="item in taskVm.filteredTasks = (taskVm.data.tasks | filter:taskVm.search | orderBy:taskVm.order)"
+                ng-style="{'background-color': taskVm.selectedTask.id == item.id ? 'lightgrey' : ''}"
+                ng-click="taskVm.selectTask(item)">
+                <!--<tr ng-repeat="item in taskVm.data.tasks">-->
+                <td>{{ item.id }}</td>
+                <td><strong>{{ item.title }}</strong></td>
+                <!--<td>{{ item.description }}</td>-->
+                <td>{{ item.status }}</td>
+                <td>{{ item.startsAt | date }}</td>
+                <td>{{ item.endsAt | date }}</td>
+                <td>
+                    <!--<button class="btn btn-default" ui-sref="taskEdit({ id = item.id })" ng-click="taskVm.showEditForm(item)">Edit</button>-->
+                    <button type="button"
+                            class="btn btn-warning pull-right"
+                            ui-sref="taskEdit({ id: item.id, isCreate: false })">
+                        <i class="fa fa-pencil"></i>&nbsp;Edit
+                    </button>
+                    &nbsp;
+                    <button type="button"
+                            class="btn btn-success pull-right"
+                            ng-click="taskVm.showViewModal(item)">
+                        <!--ui-sref="empEdit({ email: cardVm.person.email })">-->
+                        <i class="fa fa-list-ul" aria-hidden="true"></i>&nbsp;View
+                    </button>
+                </td>
+                <!--<td>-->
+                <!--<button class="btn btn-danger" ng-click="taskVm.removeTask(item.id)">Delete</button>-->
+                <!--</td>-->
+            </tr>
+            <!--<tr ng-show="taskVm.filteredTasks.length == 0">-->
+            <!--<td colspan="6">-->
+            <!--<div class="alert alert-info">-->
+            <!--<p class="text-center">No results found</p>-->
+            <!--</div>-->
+            <!--</td>-->
+            <!--</tr>-->
+            </tbody>
+        </table>
+    </div>
+
+    <div ng-show="taskVm.data.tasks.length == 0 && !taskVm.data.isLoading">
+        <div class="alert alert-info">
+            <p class="text-center">No results found</p>
+        </div>
+    </div>
+
+    <div spinner is-loading="taskVm.data.isLoading"></div>
+
+    <!--<div class="col-xs-3" ng-hide="taskVm.editFormShowing">-->
+    <!--<div class="well">-->
+    <!--<form name="singleTask">-->
+    <!--<h4>Add Task</h4>-->
+    <!--<div class="form-group">-->
+    <!--<label>Task ID</label>-->
+    <!--<input name="id" class="form-control" ng-model="taskVm.data.singleTask.id" required/>-->
+    <!--</div>-->
+    <!--<div class="form-group">-->
+    <!--<label>Task Title</label>-->
+    <!--<input name="title" class="form-control" ng-model="taskVm.data.singleTask.title" required/>-->
+    <!--</div>-->
+    <!--<div class="form-group">-->
+    <!--<label>Description</label>-->
+    <!--<textarea name="description" class="form-control" ng-model="taskVm.data.singleTask.description"-->
+    <!--required></textarea>-->
+    <!--</div>-->
+    <!--<div class="form-group">-->
+    <!--<label>status</label>-->
+    <!--<input name="status" class="form-control" ng-model="taskVm.data.singleTask.status" required/>-->
+    <!--</div>-->
+    <!--<div class="form-group">-->
+    <!--<label>Start Date</label>-->
+    <!--<input name="start" type="date" class="form-control" ng-model="taskVm.data.singleTask.start"-->
+    <!--required/>-->
+    <!--</div>-->
+    <!--<div class="form-group">-->
+    <!--<label>End Date</label>-->
+    <!--<input name="end" type="date" class="form-control" ng-model="taskVm.data.singleTask.end" required/>-->
+    <!--</div>-->
+    <!--<button class="btn btn-success" ng-click="taskVm.addTask(taskVm.data.singleTask)">Add</button>-->
+    <!--</form>-->
+    <!--</div>-->
+    <!--</div>-->
+</div>

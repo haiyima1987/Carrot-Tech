@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Renovation Almost Completed",
+    "path": "news.03.png",
+    "content": "The renovation of the offices on the 3rd floor will soon be completed. Then our font-end team will move back to their offices."
+  },
+  {
+    "title": "New Department",
+    "path": "news.05.png",
+    "content": "From next month, Carrot-Tech will have a new department which will be focusing on Java development, their office is located in 2.48."
+  },
+  {
+    "title": "New Director",
+    "path": "news.06.jpg",
+    "content": "After 2 rounds of election, our business team will have a new director. Mr. Smith, congratulations on your successful election for the new director."
+  },
+  {
+    "title": "Completed Project",
+    "path": "news.04.png",
+    "content": "Congratulations to our front-end and back-end teams! You guys did an amazing job! Our client is so happy with the end result. The project of Delivariety has been successfully completed!"
+  },
+  {
+    "title": "New Job Vacancies",
+    "path": "news.02.png",
+    "content": "Our management team will have 2 vacancies in two months, it will be welcomed if any employee can reference some competent candidates to join Carrot-Tech."
+  },
+  {
+    "title": "A New Office in Berlin",
+    "path": "news.01.png",
+    "content": "As Carrot-Tech expands, we will soon have a new office located in Berlin, we are moving towards our goal pretty well, thanks to every hard-working employee."
+  }
+]

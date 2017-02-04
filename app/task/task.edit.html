@@ -1,0 +1,29 @@
+<div class="col-sm-8 col-sm-offset-2">
+    <form class="form-horizontal"
+          ng-submit="taskDetailVm.save()"
+          novalidate>
+        <div class="panel panel-default">
+            <div class="panel-heading clearfix">
+                <div class="pull-right">
+
+                    <!--any generic way to remove the || ??-->
+                    <button class="btn btn-primary"
+                            ladda="taskDetailVm.data.isSaving"
+                            type="submit">
+                        <span ng-if="!taskDetailVm.isCreate">Save</span>
+                        <span ng-if="taskDetailVm.isCreate">Create</span>
+                    </button>
+
+                    <button class="btn btn-danger"
+                            ladda="taskDetailVm.data.isSaving"
+                            ng-if="!taskDetailVm.isCreate"
+                            ng-click="taskDetailVm.remove()">Delete
+                    </button>
+                </div>
+            </div>
+            <div class="panel-body">
+                <ng-include src="'template/form.task.html'"></ng-include>
+            </div>
+        </div>
+    </form>
+</div>

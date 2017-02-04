@@ -1,0 +1,30 @@
+<div class="col-sm-8 col-sm-offset-2">
+    <form class="form-horizontal"
+          ng-submit="deptDetailVm.save()"
+          novalidate>
+        <div class="panel panel-default">
+            <div class="panel-heading clearfix">
+                <div class="pull-right">
+
+                    <!--any generic way to remove the || ??-->
+                    <button class="btn btn-primary"
+                            ladda="deptDetailVm.data.isSaving"
+                            type="submit">
+                        <span ng-if="!deptDetailVm.isCreate">Save</span>
+                        <span ng-if="deptDetailVm.isCreate">Create</span>
+                    </button>
+
+                    <button class="btn btn-danger"
+                            ladda="deptDetailVm.data.isSaving"
+                            ng-if="!deptDetailVm.isCreate"
+                            ng-click="deptDetailVm.remove()">
+                        Delete
+                    </button>
+                </div>
+            </div>
+            <div class="panel-body">
+                <ng-include src="'template/form.department.html'"></ng-include>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,111 @@
+[
+  {
+    "id": 100,
+    "title": "Kick-off Meeting",
+    "description": "Meeting with client for details and requirements",
+    "status": "Complete",
+    "startsAt": "2016-11-30T09:00:00.000Z",
+    "endsAt": "2016-11-30T12:00:00.000Z",
+    "department": 350,
+    "employees": [
+      {
+        "id": 211290
+      },
+      {
+        "id": 211295
+      },
+      {
+        "id": 211300
+      }
+    ]
+  },
+  {
+    "id": 110,
+    "title": "Business Plan",
+    "description": "Start writing business plan and discuss with client",
+    "status": "Complete",
+    "startsAt": "2016-12-01T09:00:00.000Z",
+    "endsAt": "2016-12-08T18:00:00.000Z",
+    "department": 150,
+    "employees": [
+      {
+        "id": 211306
+      },
+      {
+        "id": 211284
+      },
+      {
+        "id": 211288
+      },
+      {
+        "id": 211282
+      }
+    ]
+  },
+  {
+    "id": 120,
+    "title": "Create Static Site",
+    "description": "Create the web page for flyers to offer basic information",
+    "status": "In Progress",
+    "startsAt": "2016-12-06T09:00:00.000Z",
+    "endsAt": "2016-12-22T18:00:00.000Z",
+    "department": 250,
+    "employees": [
+      {
+        "id": 211292
+      },
+      {
+        "id": 211317
+      },
+      {
+        "id": 211311
+      }
+    ]
+  },
+  {
+    "id": 130,
+    "title": "Create Database",
+    "description": "Create a complete database for the client",
+    "status": "Incomplete",
+    "startsAt": "2017-01-03T09:00:00.000Z",
+    "endsAt": "2017-01-17T18:00:00.000Z",
+    "department": 300,
+    "employees": [
+      {
+        "id": 211294
+      },
+      {
+        "id": 211322
+      },
+      {
+        "id": 211278
+      }
+    ]
+  },
+  {
+    "id": 140,
+    "title": "Back-end functionality",
+    "description": "Upon the agreement of the client, start the back end programing of the database",
+    "status": "Incomplete",
+    "startsAt": "2017-01-14T09:00:00.000Z",
+    "endsAt": "2017-02-03T18:00:00.000Z",
+    "department": 300,
+    "employees": [
+      {
+        "id": 211296
+      },
+      {
+        "id": 211281
+      },
+      {
+        "id": 211287
+      },
+      {
+        "id": 211324
+      },
+      {
+        "id": 211312
+      }
+    ]
+  }
+]

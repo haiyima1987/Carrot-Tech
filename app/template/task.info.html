@@ -1,0 +1,78 @@
+<div class="panel panel-primary">
+    <!--Default panel contents -->
+    <div class="panel-heading">{{ taskInfoVm.task.title }}</div>
+    <div class="panel-body">
+        <p>Description: {{ taskInfoVm.task.description }}</p>
+        <p>Deadline: {{ taskInfoVm.task.endsAt | date }}</p>
+        <p>Department: <strong>{{ taskInfoVm.getSelectedDept(taskInfoVm.task.department).name }}</strong></p>
+        <!--<div ng-repeat="item in taskInfoVm.findDept()(taskInfoVm.task.department)">-->
+        <!--{{ item.name }}-->
+        <!--</div>-->
+    </div>
+    <table class="table table-bordered table-condensed">
+        <thead>
+        <tr>
+            <td class="col-1">#</td>
+            <td class="col-2">Name</td>
+            <td class="col-3">Email</td>
+        <tbody>
+        <tr ng-repeat="emp in taskInfoVm.getSelectedEmps(taskInfoVm.task.employees)"
+            ng-style="{
+                        background: emp.email == empVm.data.selectedemp.email ?
+                        'lightgrey' : ''}">
+            <!--<tr ng-repeat="emp in taskInfoVm.findEmps()(taskInfoVm.task.employees)"-->
+            <!--ng-style="{-->
+            <!--background: emp.email == empVm.data.selectedemp.email ?-->
+            <!--'lightgrey' : ''}">-->
+            <td><img ng-src="{{ emp.photo | defaultImg:'img/avatar.png' }}"
+                     class="img-circle profilePhoto"
+                     alt="{{ $index }}"></td>
+            <td>{{ emp.name }}</td>
+            <td>{{ emp.email }}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!--<pre>{{ empVm.data.selectedEmp }}</pre>-->
+<!--<table class="table table-bordered"-->
+<!--infinite-scroll="empVm.loadMore()"-->
+<!--infinite-scroll-distance="1">-->
+<!--<thead>-->
+<!--<tr>-->
+<!--<td class="col-1">#</td>-->
+<!--<td class="col-2">-->
+<!--<div class="sortable">-->
+<!--<span class="fa fa-sort-asc" aria-hidden="true"-->
+<!--ng-click="empVm.data.order = 'name'"></span>-->
+<!--<span class="fa fa-sort-desc" aria-hidden="true"-->
+<!--ng-click="empVm.data.order = '-name'"></span>-->
+<!--</div>-->
+<!--Name-->
+<!--</td>-->
+<!--<td class="col-3">-->
+<!--<div class="sortable">-->
+<!--<span class="fa fa-sort-asc" aria-hidden="true"-->
+<!--ng-click="empVm.data.order = 'email'"></span>-->
+<!--<span class="fa fa-sort-desc" aria-hidden="true"-->
+<!--ng-click="empVm.data.order = '-email'"></span>-->
+<!--</div>-->
+<!--Email-->
+<!--</td>-->
+<!--<td class="col-4">Birthday-->
+<!--</td>-->
+<!--</thead>-->
+<!--<tbody>-->
+<!--&lt;!&ndash;ng-click="empVm.data.selectedEmp = item" could be added inside tr element&ndash;&gt;-->
+<!--<tr ng-repeat="item in empVm.data.employees"-->
+<!--ui-sref="empEdit({ email: item.email })"-->
+<!--ng-style="{background: item.email == empVm.data.selectedEmp.email ? 'lightgrey' : ''}">-->
+<!--<td><img ng-src="{{ item.photo | defaultImg:'img/avatar.png' }}"-->
+<!--class="img-circle profilePhoto"-->
+<!--alt="{{ $index }}"></td>-->
+<!--<td>{{ item.name }}</td>-->
+<!--<td>{{ item.email }}</td>-->
+<!--<td>{{ item.birthdate | date }}</td>-->
+<!--</tr>-->
+<!--</tbody>-->
+<!--</table>-->

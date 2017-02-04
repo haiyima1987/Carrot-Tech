@@ -1,0 +1,20 @@
+<!--<div class="panel panel-success">-->
+<!--&lt;!&ndash;Default panel contents &ndash;&gt;-->
+<!--<div class="panel-heading">-->
+<!--<p>{{ newsCardVm.news.title }}</p>-->
+<!--</div>-->
+<!--<div class="panel-body">-->
+<!--<small><strong>{{ newsCardVm.now | date:'longDate' }}</strong></small>-->
+<!--<p>{{ newsCardVm.news.content }}</p>-->
+<!--</div>-->
+<!--</div>-->
+
+<div class="row newsItem">
+    <div class="col-sm-3 col-md-2 imgWrapper">
+        <img class="img-responsive" ng-src="img/{{ newsCardVm.news.path }}" alt="">
+    </div>
+    <div class="col-sm-9 col-md-10 textWrapper">
+        <h6><strong>{{ newsCardVm.news.title }}</strong>    <small>{{ newsCardVm.now | date:'longDate' }}</small></h6>
+        <p>{{ newsCardVm.news.content }}</p>
+    </div>
+</div>

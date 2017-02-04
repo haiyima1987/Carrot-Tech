@@ -1,0 +1,43 @@
+<div id="createModal"
+     class="modal"
+     role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button"
+                        class="close"
+                        ng-click="taskVm.createModal.hide()">&times;</button>
+                <h4 class="modal-title">Task Information: </h4>
+                <h4 hidden>{{ taskVm.createModal.id }}</h4>
+            </div>
+            <div class="modal-body clearfix">
+                <div task-info
+                     task="taskVm.data.selectedTask">
+                </div>
+                <!--<form ng-submit="taskVm.isCreate ? taskVm.createDept() : taskVm.updateDept()"-->
+                <!--class="form-horizontal clearfix"-->
+                <!--novalidate>-->
+                <!---->
+                <!--<div class="pull-right">-->
+                <!--<button class="btn btn-primary"-->
+                <!--ladda="taskVm.data.isSaving"-->
+                <!--type="submit">Save-->
+                <!--</button>-->
+                <!--<button class="btn bg-danger"-->
+                <!--ladda="taskVm.data.isSaving"-->
+                <!--ng-click="taskVm.remove()">Delete-->
+                <!--</button>-->
+                <!--</div>-->
+                <!--</form>-->
+            </div>
+            <div class="modal-footer">
+                <button type="button"
+                        class="btn btn-warning pull-right"
+                        ng-click="taskVm.createModal.hide()"
+                        ui-sref="taskEdit({ id: taskVm.data.selectedTask.id, isCreate: false })">
+                    <i class="fa fa-pencil"></i>&nbsp;Edit
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

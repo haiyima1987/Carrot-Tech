@@ -1,0 +1,106 @@
+<div>
+    <form>
+        <div class="modal-header">
+            <h5 id="event-editor">
+                Task ID: {{ modalVm.parentScope.selectedEvent.isCreate ?
+                'ID will be auto-generated' : modalVm.parentScope.selectedEvent.id }}
+                <button type="button"
+                        class="close"
+                        ng-click="modalVm.closeModal()">&times;</button>
+            </h5>
+        </div>
+        <div class="modal-body clearfix">
+            <div class="form-group">
+                <label for="title">Task Title</label>
+                <input id="title" type="text" name="name" class="form-control"
+                       ng-model="modalVm.parentScope.selectedEvent.title"
+                       required/>
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" name="desc" class="form-control"
+                          ng-model="modalVm.parentScope.selectedEvent.description" required>
+                </textarea>
+            </div>
+            <div class="form-group">
+                <label for="status">status</label>
+                <select id="status" name="stats" class="form-control"
+                        ng-model="modalVm.parentScope.selectedEvent.status"
+                        ng-options="option for option in modalVm.taskData.taskOptions"
+                        required>
+                    <option value=""></option>
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="startsAt">Start Date</label>
+                <p class="input-group">
+                    <input id="startsAt"
+                           type="text"
+                           class="form-control"
+                           readonly
+                           uib-datepicker-popup="dd MMM yyyy"
+                           ng-model="modalVm.parentScope.selectedEvent.startsAt"
+                           is-open="modalVm.parentScope.selectedEvent.startOpen"
+                           close-text="Close"
+                           required>
+                    <span class="input-group-btn">
+                        <button type="button"
+                                class="btn btn-default"
+                                ng-click="modalVm.parentScope.toggle($event, 'startOpen', modalVm.parentScope.selectedEvent)">
+                          <i class="glyphicon glyphicon-calendar"></i>
+                        </button>
+                    </span>
+                </p>
+                <div uib-timepicker
+                     ng-model="modalVm.parentScope.selectedEvent.startsAt"
+                     hour-step="1"
+                     minute-step="15"
+                     show-meridian="true">
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="endsAt">End Date</label>
+                <p class="input-group">
+                    <input id="endsAt"
+                           type="text"
+                           class="form-control"
+                           readonly
+                           uib-datepicker-popup="dd MMM yyyy"
+                           ng-model="modalVm.parentScope.selectedEvent.endsAt"
+                           is-open="modalVm.parentScope.selectedEvent.endOpen"
+                           close-text="Close"
+                           required>
+                    <span class="input-group-btn">
+                        <button type="button"
+                                class="btn btn-default"
+                                ng-click="modalVm.parentScope.toggle($event, 'endOpen', modalVm.parentScope.selectedEvent)">
+                            <i class="glyphicon glyphicon-calendar"></i>
+                        </button>
+                    </span>
+                </p>
+                <div uib-timepicker
+                     ng-model="modalVm.parentScope.selectedEvent.endsAt"
+                     hour-step="1"
+                     minute-step="15"
+                     show-meridian="true">
+                </div>
+            </div>
+            <!--<td><input type="text"-->
+            <!--class="form-control"-->
+            <!--ng-model="modalVm.selectedEvent.title"></td>-->
+            <!--<td><input class="form-control" colorpicker type="text" ng-model="modalVm.selectedEvent.color.primary"></td>-->
+            <!--<td><input class="form-control" colorpicker type="text" ng-model="modalVm.selectedEvent.color.secondary"></td>-->
+        </div>
+        <div class="modal-footer"
+             ng-if="!modalVm.parentScope.selectedEvent.isView">
+            <button class="btn btn-primary"
+                    ng-click="modalVm.saveEvent()">
+                <i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Save
+            </button>
+            <button class="btn btn-danger"
+                    ng-click="modalVm.deleteEvent()">
+                <i class="fa fa-trash"></i> Delete
+            </button>
+        </div>
+    </form>
+</div>

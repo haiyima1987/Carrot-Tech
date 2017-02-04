@@ -1,0 +1,132 @@
+<div class="form-group">
+    <label class="col-sm-3 control-label">Task ID</label>
+    <div class="col-sm-9">
+        <input ng-if="taskDetailVm.isCreate"
+               type="text"
+               class="form-control"
+               name="id"
+               value="A new ID will be created automatically"
+               disabled/>
+        <input ng-if="!taskDetailVm.isCreate"
+               type="text"
+               class="form-control"
+               name="id"
+               ng-model="taskDetailVm.data.selectedTask.id"
+               disabled/>
+    </div>
+</div>
+
+<div class="form-group">
+    <label class="col-sm-3 control-label">Task Title</label>
+    <div class="col-sm-9">
+        <input type="text"
+               class="form-control"
+               name="id"
+               ng-model="taskDetailVm.data.selectedTask.title"
+               required/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-sm-3 control-label">Description</label>
+    <div class="col-sm-9">
+        <textarea type="text"
+                  class="form-control"
+                  name="id"
+                  ng-model="taskDetailVm.data.selectedTask.description"
+                  required>
+        </textarea>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-sm-3 control-label">Status</label>
+    <div class="col-sm-9">
+        <select id="status" name="stats" class="form-control"
+                ng-model="taskDetailVm.data.selectedTask.status"
+                ng-options="option for option in taskDetailVm.data.taskOptions"
+                required>
+            <option value=""></option>
+        </select>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-sm-3 control-label">Start Date</label>
+    <div class="col-sm-9">
+        <input class="form-control"
+               name="id"
+               ng-model="taskDetailVm.data.selectedTask.startsAt"
+               data-autoclose="1"
+               bs-datepicker
+               required/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-sm-3 control-label">End Date</label>
+    <div class="col-sm-9">
+        <input class="form-control"
+               name="id"
+               ng-model="taskDetailVm.data.selectedTask.endsAt"
+               data-autoclose="1"
+               bs-datepicker
+               required/>
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-sm-3 control-label">Department ID</label>
+    <div class="col-sm-9">
+        <input type="text"
+               class="form-control"
+               name="id"
+               ng-model="taskDetailVm.data.selectedTask.department"
+               required/>
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="row">
+        <div class="col-sm-3 control-label">Employees</div>
+        <div class="col-sm-9">
+            <button type="button" class="btn btn-primary btn-circle pull-left"
+                    ng-click="taskDetailVm.addOneEmp()">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+            </button>
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <div ng-repeat="empId in (empIds = taskDetailVm.data.selectedTask.employees)" ng-if="$index % 2 == 0"
+         class="row">
+        <div class="col-sm-6">
+            <label class="col-sm-3 control-label">ID</label>
+            <div class="col-sm-7">
+                <input type="text"
+                       class="form-control"
+                       name="id"
+                       ng-model="empIds[$index].id"
+                       required/>
+            </div>
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-warning btn-circle"
+                        ng-click="taskDetailVm.removeOneEmp(empIds[$index].id)">
+                    <i class="fa fa-minus" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+        <div class="col-sm-6"
+             ng-if="empIds.length > $index + 1">
+            <label class="col-sm-3 control-label">ID</label>
+            <div class="col-sm-7">
+                <input type="text"
+                       class="form-control"
+                       name="id"
+                       ng-model="empIds[$index + 1].id"
+                       required/>
+            </div>
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-warning btn-circle"
+                        ng-click="taskDetailVm.removeOneEmp(empIds[$index + 1].id)">
+                    <i class="fa fa-minus" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

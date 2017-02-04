@@ -1,0 +1,213 @@
+// background
+.bg {
+  background: url("../img/bg-grey-linen2.jpg") 100%;
+  padding: 110px 10px 20px;
+  @include position(absolute, $top: 0, $left: 0, $right: 0, $bottom: 0);
+  overflow: auto;
+}
+
+// navbar
+.navbar {
+  margin: 0;
+  position: relative;
+  z-index: 5;
+}
+
+.navbar-brand {
+  padding: 10px 20px 10px;
+  img {
+    height: 44px;
+    width: 120px;
+  }
+}
+
+// dashboard bars
+.leftBar {
+  padding: 0 5px 0 0;
+}
+
+.rightBar {
+  padding: 0 0 0 5px;
+}
+
+// tables
+.table {
+  background: $bgWhite;
+  @include border-radius(5px);
+  @include box-shadow(2px, 2px, 5px, $lightGrey);
+  .col-1 {
+    width: 10%;
+  }
+  .col-2 {
+    width: 30%;
+  }
+  .col-3 {
+    width: 30%;
+  }
+  .col-4 {
+    width: 30%;
+  }
+  tbody {
+    tr {
+      td {
+        vertical-align: middle;
+        .profilePhoto {
+          width: 40px;
+          height: 40px;
+        }
+      }
+    }
+  }
+}
+
+// modal
+.modal-backdrop.am-fade {
+  opacity: .5;
+  transition: opacity .15s linear;
+  &.ng-enter {
+    opacity: 0;
+    &.ng-enter-active {
+      opacity: .5;
+    }
+  }
+  &.ng-leave {
+    opacity: .5;
+    &.ng-leave-active {
+      opacity: 0;
+    }
+  }
+}
+
+.modal-header {
+  background: $whiteGrey;
+}
+
+.modal-footer {
+  background: $whiteGrey;;
+}
+
+// sorting arrows
+.sortable {
+  display: inline-block;
+  position: relative;
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  span:first-child {
+    position: absolute;
+    top: 0;
+  }
+  span:last-child {
+    position: absolute;
+    bottom: 0;
+  }
+  span {
+    color: $lightGrey;
+    font-size: 16px;
+  }
+  span:hover {
+    color: $blueOnHover;
+    cursor: pointer;
+  }
+}
+
+// directives
+.spinner {
+  position: relative;
+  margin: 0 auto;
+  padding: 40px 0;
+  width: 50px;
+  height: 50px;
+  p {
+    margin-top: 25px;
+  }
+}
+
+// name cards
+.nameCard {
+  @include box-shadow(3px, 3px, 10px, $shadowGrey);
+  border: 1px solid $lightGrey;
+  @include border-radius(3px);
+}
+
+.nameCardPanel {
+  padding: 15px;
+  background: $panelYellow;
+  .panelLeft {
+    img {
+      margin: 0 auto;
+    }
+    h5 {
+      text-align: center;
+    }
+  }
+  .panelRight {
+    padding: 0;
+  }
+}
+
+// news card
+.newsHeader {
+  background: $headerPurple;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-left: 4px solid $mainBlue;
+  border-right: 4px solid $mainBlue;
+  h5 {
+    margin: 0;
+    color: $bgWhite;
+  }
+  //&:after {
+  //  border-left: 23px solid #333;
+  //  border-top: 23px solid transparent;
+  //  border-bottom: 23px solid transparent;
+  //  @include position(absolute, auto, auto, 0, 100%);
+  //  content: "";
+  //  margin-left: 0;
+  //  width: 0;
+  //  height: 0;
+  //}
+}
+
+.newsItem {
+  margin: 10px 0 10px;
+  //@include border-radius(5px);
+  border: 1px solid $mainBlue;
+  .imgWrapper {
+    padding: 0;
+    border: 1px solid $mainBlue;
+  }
+  .textWrapper {
+    padding: 0;
+    h6 {
+      margin: 0;
+      padding: 5px 10px 5px;
+      color: $bgWhite;
+      background: $mainBlue;
+    }
+    p {
+      margin: 0;
+      padding: 5px 10px 5px;
+    }
+  }
+}
+
+// search bar
+.topBar {
+  @include box-shadow(0, 0, 5px, $lightGrey);
+  @include border-radius(4px);
+}
+
+// circle buttons
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
+  i {
+    margin-top: 3px;
+  }
+}

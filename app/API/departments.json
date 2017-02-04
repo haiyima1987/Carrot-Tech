@@ -1,0 +1,206 @@
+[
+  {
+    "id":  100,
+    "name": "Software",
+    "phone": "0612314158",
+    "address": "Amsterdam",
+    "description": "Focus on internal applications",
+    "employees": [
+      {
+        "id": 211279
+      },
+      {
+        "id": 211302
+      },
+      {
+        "id": 211286
+      },
+      {
+        "id": 211298
+      },
+      {
+        "id": 211301
+      },
+      {
+        "id": 211310
+      },
+      {
+        "id": 211307
+      }
+    ]
+  },
+  {
+    "id":  150,
+    "name": "Business",
+    "phone": "0623584612",
+    "address": "Utrecht",
+    "description": "Focus on business communication",
+    "employees": [
+      {
+        "id": 211299
+      },
+      {
+        "id": 211293
+      },
+      {
+        "id": 211308
+      },
+      {
+        "id": 211323
+      },
+      {
+        "id": 211277
+      },
+      {
+        "id": 211306
+      },
+      {
+        "id": 211284
+      },
+      {
+        "id": 211282
+      },
+      {
+        "id": 211288
+      }
+    ]
+  },
+  {
+    "id": 200,
+    "name": "Technology",
+    "phone": "0636548951",
+    "address": "Rotterdam",
+    "description": "Focus on embedded systems and hardware",
+    "employees": [
+      {
+        "id": 211285
+      },
+      {
+        "id": 211303
+      },
+      {
+        "id": 211276
+      },
+      {
+        "id": 211309
+      },
+      {
+        "id": 211318
+      }
+    ]
+  },
+  {
+    "id": 250,
+    "name": "Front-end",
+    "phone": "0635126984",
+    "address": "Eindhoven",
+    "description": "Focus on front-end web design",
+    "employees": [
+      {
+        "id": 211311
+      },
+      {
+        "id": 211283
+      },
+      {
+        "id": 211319
+      },
+      {
+        "id": 211304
+      },
+      {
+        "id": 211280
+      },
+      {
+        "id": 211317
+      },
+      {
+        "id": 211321
+      },
+      {
+        "id": 211292
+      }
+    ]
+  },
+  {
+    "id": 300,
+    "name": "Back-end",
+    "phone": "0612458954",
+    "address": "Den Haag",
+    "description": "Focus on database and server-side",
+    "employees": [
+      {
+        "id": 211278
+      },
+      {
+        "id": 211322
+      },
+      {
+        "id": 211294
+      },
+      {
+        "id": 211324
+      },
+      {
+        "id": 211320
+      },
+      {
+        "id": 211315
+      },
+      {
+        "id": 211297
+      },
+      {
+        "id": 211289
+      },
+      {
+        "id": 211296
+      },
+      {
+        "id": 211316
+      },
+      {
+        "id": 211287
+      },
+      {
+        "id": 211312
+      },
+      {
+        "id": 211281
+      },
+      {
+        "id": 211313
+      }
+    ]
+  },
+  {
+    "id": 350,
+    "name": "Management",
+    "phone": "0632195487",
+    "address": "Harlem",
+    "description": "Focus on management inside the company",
+    "employees": [
+      {
+        "id": 211290
+      },
+      {
+        "id": 211295
+      },
+      {
+        "id": 211300
+      },
+      {
+        "id": 211291
+      },
+      {
+        "id": 211305
+      },
+      {
+        "id": 211314
+      },
+      {
+        "id": 211325
+      }
+    ]
+  }
+]

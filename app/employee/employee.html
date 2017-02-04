@@ -1,0 +1,62 @@
+<div>
+    <form class="topBar form-inline well well-sm">
+        <i class="fa fa-search" aria-hidden="true"></i>
+        <div class="form-group">
+            <input type="text"
+                   class="form-control"
+                   placeholder="Search..."
+                   ng-model="empVm.data.search"
+                   ng-model-options="{ debounce: 300 }">
+            <label>
+                <i class="fa fa-sort-amount-asc" aria-hidden="true"></i>
+                <select class="form-control"
+                        ng-model="empVm.data.order">
+                    <option value="name">Name (ASC)</option>
+                    <option value="-name">Name (DESC)</option>
+                    <option value="email">Email (ASC)</option>
+                    <option value="-email">Email (DESC)</option>
+                </select>
+            </label>
+        </div>
+        <!--<button class="btn btn-primary pull-right" ng-click="empVm.showCreateModal()">Create</button>-->
+        <a ui-sref="empEdit({ email: '', isCreate: true })" class="btn btn-primary pull-right">
+            <i class="fa fa-user-plus" aria-hidden="true"></i> Create
+        </a>
+    </form>
+
+
+    <div ng-show="empVm.warning">
+        <p class="alert alert-warning text-justify">Dear Viewers, since I want to keep the API complete, when you try the "delete"
+            button, please delete the test employees which I created on top. But if they are already deleted, please
+            create one and then delete, only "name" are "email" are required to create an employee.
+            <button class="btn btn-primary pull-right"
+                    ng-click="empVm.warning = false">OK
+            </button>
+        </p>
+    </div>
+
+    <div class="row"
+         infinite-scroll="empVm.loadMore()"
+         infinite-scroll-distance="0"
+         infinite-scroll-container="'.bg'">
+        <div ng-repeat="item in empVm.data.employees" ng-if="$index % 2 == 0" class="row">
+            <!--<div name-card person="item"></div>-->
+            <div name-card person="empVm.data.employees[$index]">
+                <!--delete-person="empVm.parentDeletePerson"> // return parent function to the directive-->
+            </div>
+            <div name-card person="empVm.data.employees[$index + 1]"
+                 ng-if="empVm.data.employees.length > $index + 1">
+                <!--delete-person="empVm.parentDeletePerson"> // return parent function to the directive-->
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="empVm.data.employees.length == 0 && !empVm.data.isLoading">
+        <div class="alert alert-info">
+            <p class="text-center">No results found</p>
+        </div>
+    </div>
+
+    <div spinner is-loading="empVm.data.isLoading"></div>
+    <!--<div spinner message="Loading + {{ empVm.data.search }}"></div>-->
+</div>
